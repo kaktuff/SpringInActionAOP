@@ -11,6 +11,14 @@
                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
 
+    <!-- файл, где срез указан в кажом совете-->
+
+    <bean id="eddie"  class="com.springinaction.springidol.Instrumentalist">
+        <property name="instrument">
+            <bean class="com.springinaction.springidol.Guitar" />
+        </property>
+    </bean>
+
     <bean id="audience"
           class="com.springinaction.springidol.Audience" />
 

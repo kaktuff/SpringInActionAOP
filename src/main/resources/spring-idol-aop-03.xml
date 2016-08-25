@@ -11,7 +11,7 @@
                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
 
-    <!-- файл, где общий срез вынесен в область видимости аспекта aop:aspect-->
+    <!-- файл, где есть совет И до И после-->
 
     <bean id="eddie"  class="com.springinaction.springidol.Instrumentalist">
         <property name="instrument">
@@ -24,21 +24,11 @@
 
     <aop:config>
         <aop:aspect ref="audience"> <!-- Ссылка на компонент audience -->
-            <!-- этот срез действует только в рамках данного аспекта-->
-            <!-- чтобы определить срез, который виден из всех аспектов, нужно прописать такую же штуку в область действия элемента aop:config-->
-            <aop:pointcut id = "performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/><!-- Определение среза множества точек сопряжения -->
+            <aop:pointcut id = "performance2" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/><!-- Определение среза множества точек сопряжения -->
 
-            <aop:before pointcut-ref="performance"
-                        method="takeSeats" />
-
-            <aop:before pointcut-ref="performance"
-                        method="turnOffCellPhones" /> <!-- Перед выступлением -->
-
-            <aop:after-returning pointcut-ref="performance"
-                                 method="applaud" /> <!-- После выступления -->
-
-            <aop:after-throwing  pointcut-ref="performance"
-                                 method="demandRefund" /> <!-- После неудачного выступления -->
+            <!-- Совет, выполняемый и До и После -->
+            <aop:around pointcut-ref="performance2"
+                        method="watchPerformance" />
         </aop:aspect>
     </aop:config>
 
