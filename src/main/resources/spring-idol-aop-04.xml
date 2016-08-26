@@ -24,11 +24,12 @@
             <!-- Определение среза множества точек сопряжения -->
             <aop:pointcut id = "thinking" expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thoughts)"/>
 
-            <!-- Совет, выполняемый и До-->
+            <!-- Совет, выполняемый До-->
             <aop:before pointcut-ref="thinking"
                         method="interceptThoughts"
                         arg-names="thoughts"
             />
+
         </aop:aspect>
     </aop:config>
 

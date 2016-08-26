@@ -10,6 +10,7 @@ public class Volunteer implements Thinker{
 
     public void thinkOfSomething(String thoughts) {
         this.thoughts = thoughts;
+        System.out.println("I'm thinking!!!!");
     }
 
     public String getThoughts() {

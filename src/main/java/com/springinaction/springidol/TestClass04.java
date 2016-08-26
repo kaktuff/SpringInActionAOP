@@ -11,8 +11,7 @@ public class TestClass04 {
         Thinker volunteer = (Thinker)ctx.getBean("volunteer");
         volunteer.thinkOfSomething("B......");
 
-//        Magician magician = (Magician)ctx.getBean("magician");
-//        magician.getThoughts();
+
     }
 
 }
