@@ -11,28 +11,19 @@
                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
 
-    <!-- файл, где в совет передаем параметры-->
+    <!-- файл, где добавлен компонент класса AnnotationAwareAspectJAutoProxyCreator через конфигурационный элемент aop:aspectj-autoproxy -->
+    <!-- который автоматически создает аспекты и советы из классов помеченных аннтоцией @Aspect-->
+    <!-- по сути это аналог конфигурационного файла spring-idol-aop-01.xml, но через аннотации-->
 
-    <bean id="volunteer"  class="com.springinaction.springidol.Volunteer">
+    <bean id="eddie"  class="com.springinaction.springidol.Instrumentalist">
+        <property name="instrument">
+            <bean class="com.springinaction.springidol.Guitar" />
+        </property>
     </bean>
 
-    <bean id="magician"
-          class="com.springinaction.springidol.Magician" />
+    <bean id="audienceAspect"
+          class="com.springinaction.springidol.AudienceAspect" />
 
-    <aop:config>
-        <aop:aspect ref="magician"> <!-- Ссылка на компонент magician -->
-            <!-- Определение среза множества точек сопряжения -->
-            <aop:pointcut id = "thinking" expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thoughts)"/>
-
-            <!-- Совет, выполняемый До-->
-            <aop:before pointcut-ref="thinking"
-                        method="interceptThoughts"
-                        arg-names="thoughts"
-            />
-
-        </aop:aspect>
-
-
-    </aop:config>
+    <aop:aspectj-autoproxy/>
 
 </beans>
