@@ -42,6 +42,7 @@
         </aop:aspect>
 
         <!-- аспект задает доп действия для компонента, которые он на самом деле не релазиует как java-объект-->
+        <!-- т.е. это внедрение реализации интерфейчас в существующий компонент, не изменяя существующего программного кода-->
         <aop:aspect>
             <aop:declare-parents types-matching="com.springinaction.springidol.Performer+"
                                  implement-interface="com.springinaction.springidol.Contestant"
